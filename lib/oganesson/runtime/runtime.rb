@@ -5,6 +5,7 @@ require 'oganesson/runtime/create_service'
 require 'oganesson/runtime/data_helper'
 require 'oganesson/runtime/service_model'
 require 'oganesson/runtime/support_code'
+require 'oganesson/configuration'
 
 module Oganesson
   class Runtime

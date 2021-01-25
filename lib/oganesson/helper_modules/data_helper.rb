@@ -1,6 +1,7 @@
+require 'erb'
+
 module Oganesson
   module DataHelper
-    desc 'contains all data manipulation methods'
 
     def load_yaml(path,filename)
       #pass in path and filename with extension. I.E. SERVICE_DEFINITION_DIRECTORY, SERVICENAME
