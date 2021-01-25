@@ -27,10 +27,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-   spec.add_dependency "httparty"
-   spec.add_dependency "report_builder"
-   spec.add_dependency "rspec"
-   spec.add_dependency "thor"
-   spec.add_dependency "yard"
+  spec.add_dependency "httparty"
+  spec.add_dependency "report_builder"
+  spec.add_dependency "rspec"
+  spec.add_dependency "thor"
+  spec.add_dependency "yard"
+
+  spec.executables      = ['oganesson']
+  spec.rdoc_options     = ['--charset=UTF-8']
+  spec.require_path     = 'lib'
 
 end

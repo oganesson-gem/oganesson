@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+file_name = File.dirname(__FILE__) + '/../lib'
+$LOAD_PATH.unshift(file_name) unless $LOAD_PATH.include?(file_name)
+
+# require 'simplecov_setup'
+require "bundler/setup"
+# require 'cucumber/rspec/disable_option_parser'
+require "oganesson/cli/main"
+# # The dup is to keep ARGV intact, so that tools like ruby-debug can respawn.
+Oganesson::Cli::Main.new(ARGV.dup).execute!

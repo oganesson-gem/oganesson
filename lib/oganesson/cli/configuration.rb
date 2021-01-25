@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'oganesson/cli/Options'
+require 'oganesson/cli/options'
 require 'oganesson'
 
 module Oganesson
