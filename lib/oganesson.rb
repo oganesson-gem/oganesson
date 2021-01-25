@@ -3,11 +3,18 @@
 require_relative "oganesson/version"
 require 'yaml'
 require 'oganesson/cli/main'
+require 'oganesson/runtime/support_code'
+require 'oganesson/runtime/runtime'
 
 
 module Oganesson
   class << self
-    attr_accessor :wants_to_quit, :use_legacy_autoloader
+    attr_accessor :wants_to_quit, :use_legacy_autoloader, :container
+
+    def self.start
+      @container = Runtime.new
+      sleep 3
+    end
 
     def logger
       return @log if @log

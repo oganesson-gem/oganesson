@@ -10,18 +10,24 @@ module Oganesson
       attr_accesor :state
 
       def initialize(service_name)
+        # retrieve the information about the model
+        @state["model_data"] = DataHelper.load_yaml(File.join(SERVICE_DEFINITION_DIRECTORY,"#{service_name}"),"#{service_name}_definition.yml")
         generate_model(service_name.downcase!)
       end
 
       def generate_model(service_name)
         begin
-          model_data = DataHelper.load_yaml(File.join(SERVICE_DEFINITION_DIRECTORY,"#{service_name}"), "#{service_name}_definition.yml")
 
-          model_path = model_data["PATH"]
-          model_headers = model_data["HEADERS"]
-          model_body = model_data["BODY"]
+          # service model path  i.e. 'api/1.0/getsomething'
+          model_path = @state["model_data"]["PATH"]
+          # service model headers i.e. {header-name: 'required', header2-name: 'not required'}
+          model_headers = @state["model_data"]["HEADERS"]
+          # service model body i.e. {field: 'required', field2: 'not required'}
+          model_body = @state["model_data"]["BODY"]
 
+          # a complete service model
           service_model = {model_path: model_path, model_headers: model_headers, model_body: model_body}
+          # creates a service store object and overwrites the ServiceModel @state
           @state = ServiceStore.new(service_name, service_model)
 
         rescue SERVICE_MODEL_ERROR => e
