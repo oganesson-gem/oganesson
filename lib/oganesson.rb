@@ -12,7 +12,7 @@ module Oganesson
   class << self
     attr_accessor :wants_to_quit, :use_legacy_autoloader, :container
 
-    def self.start(ogfile_location, profile)
+    def start(ogfile_location, profile)
 
       @container = Runtime.new(Configuration.new(ogfile_location, profile))
       sleep 3
