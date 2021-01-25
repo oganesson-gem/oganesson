@@ -5,14 +5,16 @@ require 'yaml'
 require 'oganesson/cli/main'
 require 'oganesson/runtime/support_code'
 require 'oganesson/runtime/runtime'
+require 'oganesson/configuration'
 
 
 module Oganesson
   class << self
     attr_accessor :wants_to_quit, :use_legacy_autoloader, :container
 
-    def self.start
-      @container = Runtime.new
+    def self.start(ogfile_location, profile)
+
+      @container = Runtime.new(Configuration.new(ogfile_location, profile))
       sleep 3
     end
 
